@@ -17,23 +17,29 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     Timer(
-        const Duration(
-          seconds: 3,
-        ),
-        () => 
-          context.pushReplacementNamed(HomeView.route),
-        );
+      const Duration(
+        seconds: 4,
+      ),
+      () => context.pushReplacementNamed(HomeView.route),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blue,
+      //primary color
+      color: Color.fromRGBO(27, 69, 113, 1),
       child: Center(
         child: Container(
-          width: 150,
-          height: 150,
-          color: Colors.red,
+          width: 300,
+          height: 200,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                'assets/images/sunray-news-logo.png',
+              ),
+            ),
+          ),
         ),
       ),
     );
