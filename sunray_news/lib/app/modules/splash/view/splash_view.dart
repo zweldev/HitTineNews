@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hit_tine_news/app/core/extensions/navigation_extensions.dart';
 import 'package:hit_tine_news/app/modules/home/view/home_view.dart';
+import 'package:hit_tine_news/app/modules/main/views/main_view.dart';
 
 class SplashView extends StatefulWidget {
   SplashView({super.key});
@@ -18,9 +19,9 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     Timer(
       const Duration(
-        seconds: 4,
+        seconds: 5,
       ),
-      () => context.pushReplacementNamed(HomeView.route),
+      () => context.pushReplacementNamed(MainView.route),
     );
   }
 
