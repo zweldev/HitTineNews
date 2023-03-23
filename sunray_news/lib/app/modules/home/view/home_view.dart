@@ -8,7 +8,12 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
+        title: Text(
+          "Sun Ray",
+          style: TextStyle(
+            fontFamily: 'Delicious',
+          ),
+        ),
       ),
     );
   }
