@@ -18,6 +18,10 @@ class HitTineNews extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: SplashView.route,
+      theme: ThemeData(
+        primaryColor: Color.fromRGBO(27, 69, 113, 1),
+        
+      ),
       routes: {
         SplashView.route: (context) => SplashView(),
         HomeView.route: (context) => HomeView(),

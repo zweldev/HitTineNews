@@ -28,7 +28,7 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return Container(
       //primary color
-      color: Color.fromRGBO(27, 69, 113, 1),
+      color: Theme.of(context).primaryColor,
       child: Center(
         child: Container(
           width: 300,
