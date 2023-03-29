@@ -20,14 +20,14 @@ class SunRayNews extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: SplashView.route,
       theme: ThemeData(
-        primaryColor: Color.fromRGBO(27, 69, 113, 1),
-        fontFamily: 'Delicious'
-        
-      ),
+          appBarTheme: AppBarTheme(color: Colors.black),
+          bottomAppBarTheme: BottomAppBarTheme(color: Colors.black),
+          primaryColor: Color.fromRGBO(27, 69, 113, 1),
+          fontFamily: 'Delicious'),
       routes: {
         SplashView.route: (context) => SplashView(),
         HomeView.route: (context) => HomeView(),
-        MainView.route :(context) => MainView(),
+        MainView.route: (context) => MainView(),
       },
     );
   }

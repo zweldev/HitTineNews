@@ -43,7 +43,14 @@ flutter:
     - assets/images/
 
   fonts:
-    - family: Delicious
+    - family: Lato
       fonts:
-        - asset: assets/fonts/Delicious_Handrawn/DeliciousHandrawn-Regular.ttf
-          weight: 400 
+        - asset: assets/fonts/Lato/Lato-Thin.ttf
+          weight: 400
+        - asset: assets/fonts/Lato/Lato-Light.ttf
+          weight: 500
+        - asset: assets/fonts/Lato/Lato-Regular.ttf
+          weight: 600
+        - asset: assets/fonts/Lato/Lato-Bold.ttf
+          weight: 700
+

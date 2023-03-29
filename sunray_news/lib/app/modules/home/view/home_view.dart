@@ -11,7 +11,7 @@ class HomeView extends StatelessWidget {
         title: Text(
           "Sun Ray",
           style: TextStyle(
-            fontFamily: 'Delicious',
+            fontFamily: 'Lato',
           ),
         ),
       ),
