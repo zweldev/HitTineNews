@@ -4,6 +4,8 @@ import 'package:hit_tine_news/app/modules/home/view/home_view.dart';
 import 'package:hit_tine_news/app/modules/search/view/search_view.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 
+import '../../categories/view/categories_view.dart';
+
 class MainView extends StatelessWidget {
   MainView({super.key});
 
@@ -11,6 +13,7 @@ class MainView extends StatelessWidget {
 
   List<Widget> pages = [
     HomeView(),
+    CategoriesView(),
     SearchView(),
     BookMarkView(),
   ];
@@ -24,6 +27,8 @@ class MainView extends StatelessWidget {
       ),
       bottomNavigationBar: BottomNavigationBar(items: const [
         BottomNavigationBarItem(icon: Icon(TablerIcons.news), label: "Home"),
+        BottomNavigationBarItem(
+            icon: Icon(TablerIcons.category), label: "Categories"),
         BottomNavigationBarItem(
             icon: Icon(TablerIcons.search), label: "Search"),
         BottomNavigationBarItem(
