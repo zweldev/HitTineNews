@@ -5,8 +5,6 @@ class CategoriesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: Text("Categories"),
-    );
+    return Placeholder();
   }
 }
