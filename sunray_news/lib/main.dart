@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hit_tine_news/app/modules/home/view/home_view.dart';
-import 'package:hit_tine_news/app/modules/main/views/main_view.dart';
-import 'package:hit_tine_news/app/modules/splash/view/splash_view.dart';
+
+import 'app/modules/home/view/home_view.dart';
+import 'app/modules/main/views/main_view.dart';
+import 'app/modules/splash/view/splash_view.dart';
+import 'app/theme/theme_constants.dart';
+import 'app/theme/theme_manager.dart';
+import 'package:splash_view/splash_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,6 +15,8 @@ void main() {
   runApp(SunRayNews());
 }
 
+ThemeManager _themeManager = ThemeManager();
+
 class SunRayNews extends StatelessWidget {
   const SunRayNews({super.key});
 
@@ -18,15 +24,11 @@ class SunRayNews extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: SplashView.route,
-      theme: ThemeData(
-          appBarTheme: AppBarTheme(color: Colors.black),
-          bottomAppBarTheme: BottomAppBarTheme(color: Colors.black),
-          primaryColor: Color.fromRGBO(27, 69, 113, 1),
-          fontFamily: 'Delicious'),
+      initialRoute: MainView.route,
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: _themeManager.themeMode,
       routes: {
-        SplashView.route: (context) => SplashView(),
-        HomeView.route: (context) => HomeView(),
         MainView.route: (context) => MainView(),
       },
     );
