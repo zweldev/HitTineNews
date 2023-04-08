@@ -25,7 +25,6 @@ class MainView extends StatelessWidget {
     CategoriesView(),
     SearchView(),
     BookMarkView(),
-    SettingView(),
   ];
 
   int currentIndex = 3;
@@ -33,7 +32,10 @@ class MainView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SplashView(
-      logo: Image.asset("assets/images/sunray-news-logo.png"),
+      logo: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Image.asset("assets/images/sunray-news-logo.png"),
+      ),
       backgroundColor: Color.fromRGBO(27, 69, 113, 1),
       done: Done(
         curve: Curves.easeOut,
