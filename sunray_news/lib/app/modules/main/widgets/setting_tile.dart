@@ -10,7 +10,13 @@ class SettingTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [Text(text), trailing],
+      children: [
+        Text(
+          text,
+          style: TextStyle(fontSize: 15),
+        ),
+        trailing
+      ],
     );
   }
 }

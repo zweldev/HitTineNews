@@ -12,7 +12,6 @@ import '../../search/view/search_view.dart';
 import '../../settings/view/setting_view.dart';
 import '../widgets/bottom_nav_bar.dart';
 
-ThemeManager _themeManager = ThemeManager();
 PageController _pageController = PageController();
 
 class MainView extends StatelessWidget {
