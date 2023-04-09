@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sunray_news/app/core/extensions/theme_extensions.dart';
 import 'package:sunray_news/app/modules/main/cubit/main_view_cubit.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 
@@ -21,56 +23,60 @@ class BottomNavBarComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MainViewCubit, MainViewState>(
       builder: (context, state) {
-        return BottomNavigationBar(
-            currentIndex: state.currentPageIndex,
-            onTap: (value) {
-              if (value > 2) {
-                showSettingDialog(context);
-                print("value $value");
-                return;
-              }
+        return SizedBox(
+          height: 60.h,
+          child: BottomNavigationBar(
+              currentIndex: state.currentPageIndex,
+              onTap: (value) {
+                if (value > 2) {
+                  showSettingDialog(context);
+                  print("value $value");
+                  return;
+                }
 
-              pageController.animateToPage(value,
-                  duration: Duration(milliseconds: 200), curve: Curves.linear);
+                pageController.animateToPage(value,
+                    duration: Duration(milliseconds: 200),
+                    curve: Curves.linear);
 
-              context.read<MainViewCubit>().onPageChange(value);
-            },
-            useLegacyColorScheme: true,
-            elevation: 3,
-            backgroundColor: Theme.of(context).colorScheme.primary,
-            selectedIconTheme: IconThemeData(
-              color: Theme.of(context).colorScheme.secondary,
-            ),
-            unselectedIconTheme: IconThemeData(
-              color: Theme.of(context).colorScheme.background,
-            ),
-            selectedItemColor: Theme.of(context).colorScheme.secondary,
-            selectedFontSize: 15,
-            showUnselectedLabels: true,
-            type: BottomNavigationBarType.fixed,
-            items: [
-              BottomNavigationBarItem(
-                  icon: Icon(
-                    TablerIcons.news,
-                  ),
-                  tooltip: "News",
-                  label: "News"),
-              BottomNavigationBarItem(
-                  icon: Icon(TablerIcons.search),
-                  tooltip: "Search",
-                  label: "Search"),
-              BottomNavigationBarItem(
-                  icon: Icon(TablerIcons.bookmark),
-                  tooltip: "Bookmark",
-                  label: "Bookmark"),
-              BottomNavigationBarItem(
-                  icon: Icon(
-                    TablerIcons.settings,
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
-                  tooltip: "Settings",
-                  label: "Settings")
-            ]);
+                context.read<MainViewCubit>().onPageChange(value);
+              },
+              useLegacyColorScheme: true,
+              elevation: 3,
+              backgroundColor: context.primaryColor,
+              selectedIconTheme: IconThemeData(
+                color:  context.secondaryColor,
+              ),
+              unselectedIconTheme: IconThemeData(
+                color:  context.backgroundColor,
+              ),
+              selectedItemColor:  context.secondaryColor,
+              selectedFontSize: 15,
+              showUnselectedLabels: true,
+              type: BottomNavigationBarType.fixed,
+              items: [
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      TablerIcons.news,
+                    ),
+                    tooltip: "News",
+                    label: "News"),
+                BottomNavigationBarItem(
+                    icon: Icon(TablerIcons.search),
+                    tooltip: "Search",
+                    label: "Search"),
+                BottomNavigationBarItem(
+                    icon: Icon(TablerIcons.bookmark),
+                    tooltip: "Bookmark",
+                    label: "Bookmark"),
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      TablerIcons.settings,
+                      color:  context.secondaryColor,
+                    ),
+                    tooltip: "Settings",
+                    label: "Settings")
+              ]),
+        );
       },
     );
   }

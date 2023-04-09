@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
 ThemeData lightTheme = ThemeData(
+  useMaterial3: true,
+  textTheme: TextTheme(
+      bodyLarge: TextStyle(
+        color: Colors.black,
+        fontSize: 20,
+      ),
+      bodyMedium: TextStyle(color: Colors.black, fontSize: 15)),
   colorScheme: ColorScheme(
     brightness: Brightness.light,
     primary: Colors.white,
@@ -17,6 +24,13 @@ ThemeData lightTheme = ThemeData(
 );
 
 ThemeData darkTheme = ThemeData(
+  useMaterial3: true,
+  textTheme: TextTheme(
+      bodyLarge: TextStyle(
+        color: Colors.white,
+        fontSize: 20,
+      ),
+      bodyMedium: TextStyle(color: Colors.white, fontSize: 15)),
   colorScheme: ColorScheme(
     brightness: Brightness.dark,
     primary: Color.fromRGBO(27, 69, 113, 1),

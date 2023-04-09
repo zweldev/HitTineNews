@@ -32,7 +32,6 @@ class SunRayNews extends StatelessWidget {
         return BlocBuilder<ThemeCubit, ThemeState>(
           builder: (context, state) {
             return MaterialApp(
-            
               debugShowCheckedModeBanner: false,
               initialRoute: MainView.route,
               theme: lightTheme,
