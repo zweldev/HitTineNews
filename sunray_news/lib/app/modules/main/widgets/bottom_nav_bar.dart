@@ -24,7 +24,7 @@ class BottomNavBarComponent extends StatelessWidget {
         return BottomNavigationBar(
             currentIndex: state.currentPageIndex,
             onTap: (value) {
-              if (value > 3) return;
+              if (value > 2) return;
 
               pageController.animateToPage(value,
                   duration: Duration(milliseconds: 200), curve: Curves.linear);
@@ -42,8 +42,7 @@ class BottomNavBarComponent extends StatelessWidget {
             ),
             selectedItemColor: Theme.of(context).colorScheme.secondary,
             selectedFontSize: 15,
-            showUnselectedLabels: false,
-            showSelectedLabels: false,
+            showUnselectedLabels: true,
             type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(
@@ -52,10 +51,6 @@ class BottomNavBarComponent extends StatelessWidget {
                   ),
                   tooltip: "News",
                   label: "News"),
-              BottomNavigationBarItem(
-                  icon: Icon(TablerIcons.category),
-                  tooltip: "Categories",
-                  label: "Categories"),
               BottomNavigationBarItem(
                   icon: Icon(TablerIcons.search),
                   tooltip: "Search",
@@ -67,23 +62,9 @@ class BottomNavBarComponent extends StatelessWidget {
               BottomNavigationBarItem(
                   icon: InkWell(
                     onTap: () => showSettingDialog(context),
-                    child: Container(
-                      width: 30,
-                      height: 30,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.shade500,
-                              blurRadius: 1,
-                              offset: Offset(1, 1),
-                            ),
-                          ],
-                          shape: BoxShape.circle,
-                          color: Theme.of(context).colorScheme.secondary),
-                      child: Icon(
-                        TablerIcons.settings,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
+                    child: Icon(
+                      TablerIcons.settings,
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                   ),
                   tooltip: "Settings",

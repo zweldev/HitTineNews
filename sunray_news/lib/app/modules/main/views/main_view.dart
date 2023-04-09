@@ -6,7 +6,6 @@ import 'package:sunray_news/app/theme/theme_manager.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 
 import '../../bookmark/view/bookmark_view.dart';
-import '../../categories/view/categories_view.dart';
 import '../../home/view/home_view.dart';
 import '../../search/view/search_view.dart';
 import '../../settings/view/setting_view.dart';
@@ -21,7 +20,6 @@ class MainView extends StatelessWidget {
 
   List<Widget> pages = [
     HomeView(),
-    CategoriesView(),
     SearchView(),
     BookMarkView(),
   ];
