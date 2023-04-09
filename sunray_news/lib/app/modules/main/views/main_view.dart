@@ -6,13 +6,11 @@ import 'package:sunray_news/app/theme/theme_manager.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 
 import '../../bookmark/view/bookmark_view.dart';
-import '../../categories/view/categories_view.dart';
 import '../../home/view/home_view.dart';
 import '../../search/view/search_view.dart';
 import '../../settings/view/setting_view.dart';
 import '../widgets/bottom_nav_bar.dart';
 
-ThemeManager _themeManager = ThemeManager();
 PageController _pageController = PageController();
 
 class MainView extends StatelessWidget {
@@ -22,10 +20,8 @@ class MainView extends StatelessWidget {
 
   List<Widget> pages = [
     HomeView(),
-    CategoriesView(),
     SearchView(),
     BookMarkView(),
-    SettingView(),
   ];
 
   int currentIndex = 3;
@@ -33,7 +29,10 @@ class MainView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SplashView(
-      logo: Image.asset("assets/images/sunray-news-logo.png"),
+      logo: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Image.asset("assets/images/sunray-news-logo.png"),
+      ),
       backgroundColor: Color.fromRGBO(27, 69, 113, 1),
       done: Done(
         curve: Curves.easeOut,

@@ -3,10 +3,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sunray_news/app/modules/main/cubit/main_view_cubit.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 
+import 'setting_dialog.dart';
+
 class BottomNavBarComponent extends StatelessWidget {
   const BottomNavBarComponent({super.key, required this.pageController});
 
   final PageController pageController;
+
+  void showSettingDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => SettingDialog(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +24,12 @@ class BottomNavBarComponent extends StatelessWidget {
         return BottomNavigationBar(
             currentIndex: state.currentPageIndex,
             onTap: (value) {
+              if (value > 2) {
+                showSettingDialog(context);
+                print("value $value");
+                return;
+              }
+
               pageController.animateToPage(value,
                   duration: Duration(milliseconds: 200), curve: Curves.linear);
 
@@ -31,8 +46,7 @@ class BottomNavBarComponent extends StatelessWidget {
             ),
             selectedItemColor: Theme.of(context).colorScheme.secondary,
             selectedFontSize: 15,
-            showUnselectedLabels: false,
-            showSelectedLabels: false,
+            showUnselectedLabels: true,
             type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(
@@ -42,10 +56,6 @@ class BottomNavBarComponent extends StatelessWidget {
                   tooltip: "News",
                   label: "News"),
               BottomNavigationBarItem(
-                  icon: Icon(TablerIcons.category),
-                  tooltip: "Categories",
-                  label: "Categories"),
-              BottomNavigationBarItem(
                   icon: Icon(TablerIcons.search),
                   tooltip: "Search",
                   label: "Search"),
@@ -54,9 +64,12 @@ class BottomNavBarComponent extends StatelessWidget {
                   tooltip: "Bookmark",
                   label: "Bookmark"),
               BottomNavigationBarItem(
-                  icon: Icon(TablerIcons.settings),
+                  icon: Icon(
+                    TablerIcons.settings,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
                   tooltip: "Settings",
-                  label: "Settings"),
+                  label: "Settings")
             ]);
       },
     );
