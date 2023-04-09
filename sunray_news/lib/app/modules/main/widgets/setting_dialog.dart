@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sunray_news/app/core/enum/language.dart';
 import 'package:sunray_news/app/core/extensions/navigation_extensions.dart';
+import 'package:sunray_news/app/core/extensions/theme_extensions.dart';
 import 'package:sunray_news/app/modules/main/widgets/setting_tile.dart';
 import 'package:sunray_news/app/theme/cubit/theme_cubit.dart';
 import 'package:sunray_news/app/widgets/custom_button.dart';
@@ -31,6 +32,7 @@ class _SettingDialogState extends State<SettingDialog> {
     return BlocBuilder<ThemeCubit, ThemeState>(
       builder: (context, state) {
         return Dialog(
+          backgroundColor: context.theme.colorScheme.primary,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(10))),
           insetPadding: EdgeInsets.symmetric(horizontal: 30),
@@ -54,6 +56,7 @@ class _SettingDialogState extends State<SettingDialog> {
                 SettingTile(
                   text: "Language",
                   trailing: languageDropDown(
+                    context: context,
                     languages: languages,
                     onChanged: (val) {
                       context.read<ThemeCubit>().languageChange(val);

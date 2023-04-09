@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sunray_news/app/core/enum/categories.dart';
 import 'package:sunray_news/app/core/extensions/theme_extensions.dart';
 
 class HomeView extends StatelessWidget {
@@ -11,42 +12,103 @@ class HomeView extends StatelessWidget {
       length: 7,
       initialIndex: 0,
       child: Scaffold(
-        appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            title: TabBar(
-                dividerColor: Colors.transparent,
-                indicatorPadding: EdgeInsets.zero,
-                indicatorColor: context.secondaryColor,
-                isScrollable: true,
-                labelColor: context.secondaryColor,
-                labelStyle: context.bodyMedium,
-                tabs: [
-                  Tab(
-                    text: "Top Headlines",
+          body: NestedScrollView(
+              floatHeaderSlivers: true,
+              headerSliverBuilder: (context, index) {
+                return [
+                  SliverAppBar(
+                    backgroundColor: Colors.transparent,
+                    flexibleSpace: Container(
+                      color: context.theme.colorScheme.primary,
+                      child: TabBar(
+                          padding: EdgeInsets.zero,
+                          dividerColor: Colors.transparent,
+                          indicatorPadding: EdgeInsets.zero,
+                          indicatorColor: context.secondaryColor,
+                          indicatorSize: TabBarIndicatorSize.tab,
+                          isScrollable: true,
+                          labelColor: context.theme.colorScheme.secondary,
+                          unselectedLabelColor:
+                              context.theme.colorScheme.surface,
+                          labelStyle: context.bodyMedium
+                              .copyWith(fontWeight: FontWeight.bold),
+                          tabs: Categories.values
+                              .map((e) => Padding(
+                                    padding: const EdgeInsets.all(3.0),
+                                    child: Tab(
+                                      child: Text(
+                                        e.toString().substring(11),
+                                      ),
+                                    ),
+                                  ))
+                              .toList()),
+                    ),
                   ),
-                  Tab(
-                    text: "Business",
-                  ),
-                  Tab(
-                    text: "Technology",
-                  ),
-                  Tab(
-                    text: "Entertainment",
-                  ),
-                  Tab(
-                    text: "Sports",
-                  ),
-                  Tab(
-                    text: "Science",
-                  ),
-                  Tab(
-                    text: "Health",
-                  ),
-                ])),
-        body: Container(
-          color: context.secondaryColor,
-        ),
-      ),
+                ];
+              },
+              body: TabBarView(
+                  children: Categories.values
+                      .map((e) => ListView.builder(
+                            itemCount: 30,
+                            itemBuilder: (context, index) => ListTile(
+                              title: Text("1"),
+                            ),
+                          ))
+                      .toList()))),
     );
   }
 }
+
+/**
+ * TabBarView(
+                      children: Categories.values
+                          .map((e) => Container(
+                                child: Center(
+                                  child: Text(e.name.toString()),
+                                ),
+                              ))
+                          .toList())
+ */
+
+/**
+ * CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              floating: true,
+              backgroundColor: Colors.transparent,
+              flexibleSpace: Container(
+                color: context.theme.colorScheme.primary,
+                child: TabBar(
+                    padding: EdgeInsets.zero,
+                    dividerColor: Colors.transparent,
+                    indicatorPadding: EdgeInsets.zero,
+                    indicatorColor: context.secondaryColor,
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    isScrollable: true,
+                    labelColor: context.theme.colorScheme.secondary,
+                    unselectedLabelColor: context.theme.colorScheme.surface,
+                    labelStyle: context.bodyMedium
+                        .copyWith(fontWeight: FontWeight.bold),
+                    tabs: Categories.values
+                        .map((e) => Padding(
+                              padding: const EdgeInsets.all(3.0),
+                              child: Tab(
+                                child: Text(
+                                  e.toString().substring(11),
+                                ),
+                              ),
+                            ))
+                        .toList()),
+              ),
+              
+            ),
+            SliverList(
+              delegate: SliverChildListDelegate([
+                SliverToBoxAdapter(
+                  child: Container(),
+                )
+              ]),
+            )
+          ],
+        ),
+ */
