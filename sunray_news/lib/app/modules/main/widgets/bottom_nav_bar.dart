@@ -24,7 +24,11 @@ class BottomNavBarComponent extends StatelessWidget {
         return BottomNavigationBar(
             currentIndex: state.currentPageIndex,
             onTap: (value) {
-              if (value > 2) return;
+              if (value > 2) {
+                showSettingDialog(context);
+                print("value $value");
+                return;
+              }
 
               pageController.animateToPage(value,
                   duration: Duration(milliseconds: 200), curve: Curves.linear);
@@ -60,12 +64,9 @@ class BottomNavBarComponent extends StatelessWidget {
                   tooltip: "Bookmark",
                   label: "Bookmark"),
               BottomNavigationBarItem(
-                  icon: InkWell(
-                    onTap: () => showSettingDialog(context),
-                    child: Icon(
-                      TablerIcons.settings,
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
+                  icon: Icon(
+                    TablerIcons.settings,
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
                   tooltip: "Settings",
                   label: "Settings")
