@@ -38,16 +38,20 @@ class MainView extends StatelessWidget {
         curve: Curves.easeOut,
         animationDuration: Duration(milliseconds: 200),
         Scaffold(
-          body: PageView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            controller: _pageController,
-            onPageChanged: (val) {
-              print("Val is $val");
-            },
-            itemCount: pages.length,
-            itemBuilder: (context, i) => pages[i],
+          body: SafeArea(
+            top: false,
+            child: PageView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              controller: _pageController,
+              onPageChanged: (val) {
+                print("Val is $val");
+              },
+              itemCount: pages.length,
+              itemBuilder: (context, i) => pages[i],
+            ),
           ),
-          bottomNavigationBar: BottomNavBarComponent(pageController: _pageController),
+          bottomNavigationBar:
+              BottomNavBarComponent(pageController: _pageController),
         ),
       ),
     );

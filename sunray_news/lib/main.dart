@@ -13,6 +13,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark));
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(SunRayNews());
@@ -32,6 +35,7 @@ class SunRayNews extends StatelessWidget {
         return BlocBuilder<ThemeCubit, ThemeState>(
           builder: (context, state) {
             return MaterialApp(
+              
               debugShowCheckedModeBanner: false,
               initialRoute: MainView.route,
               theme: lightTheme,
