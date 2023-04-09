@@ -18,13 +18,15 @@ class CustomButton extends StatelessWidget {
         style: ButtonStyle(
           backgroundColor: isConfirm
               ? MaterialStatePropertyAll(
-                  Theme.of(context).colorScheme.secondary)
+                  Color.fromRGBO(27, 69, 113, 1),
+                )
               : MaterialStatePropertyAll(Colors.white),
         ),
         onPressed: onTap,
         child: Text(
           text,
-          style: TextStyle(color: isConfirm ? Colors.white : Colors.black),
+          style: TextStyle(
+              color: isConfirm ? Colors.white : Color.fromRGBO(27, 69, 113, 1)),
         ));
   }
 }

@@ -73,9 +73,9 @@ class BottomNavBarComponent extends StatelessWidget {
                       decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey,
+                              color: Colors.grey.shade500,
                               blurRadius: 1,
-                              offset: Offset(2, 1),
+                              offset: Offset(1, 1),
                             ),
                           ],
                           shape: BoxShape.circle,

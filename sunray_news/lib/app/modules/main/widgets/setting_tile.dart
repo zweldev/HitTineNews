@@ -10,7 +10,6 @@ class SettingTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      mainAxisSize: MainAxisSize.min,
       children: [Text(text), trailing],
     );
   }
