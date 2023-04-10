@@ -44,12 +44,12 @@ class BottomNavBarComponent extends StatelessWidget {
               elevation: 3,
               backgroundColor: context.primaryColor,
               selectedIconTheme: IconThemeData(
-                color:  context.secondaryColor,
+                color: context.secondaryColor,
               ),
               unselectedIconTheme: IconThemeData(
-                color:  context.backgroundColor,
+                color: context.theme.colorScheme.surface,
               ),
-              selectedItemColor:  context.secondaryColor,
+              selectedItemColor: context.secondaryColor,
               selectedFontSize: 15,
               showUnselectedLabels: true,
               type: BottomNavigationBarType.fixed,
@@ -71,7 +71,7 @@ class BottomNavBarComponent extends StatelessWidget {
                 BottomNavigationBarItem(
                     icon: Icon(
                       TablerIcons.settings,
-                      color:  context.secondaryColor,
+                      color: context.secondaryColor,
                     ),
                     tooltip: "Settings",
                     label: "Settings")

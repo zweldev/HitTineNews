@@ -12,4 +12,10 @@ extension ThemeExtension on BuildContext {
   TextStyle get bodyLarge => theme.textTheme.bodyLarge!;
 
   TextStyle get bodyMedium => theme.textTheme.bodyMedium!;
+
+  TextStyle get bodySmall => theme.textTheme.bodySmall!;
+
+  double get width => MediaQuery.of(this).size.width;
+
+  double get height => MediaQuery.of(this).size.height;
 }

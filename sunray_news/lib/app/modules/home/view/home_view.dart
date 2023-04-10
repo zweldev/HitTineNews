@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sunray_news/app/core/enum/categories.dart';
 import 'package:sunray_news/app/core/extensions/theme_extensions.dart';
+import 'package:sunray_news/app/widgets/article_card.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({super.key});
@@ -47,12 +48,11 @@ class HomeView extends StatelessWidget {
                 ];
               },
               body: TabBarView(
+                  physics: NeverScrollableScrollPhysics(),
                   children: Categories.values
                       .map((e) => ListView.builder(
                             itemCount: 30,
-                            itemBuilder: (context, index) => ListTile(
-                              title: Text("1"),
-                            ),
+                            itemBuilder: (context, index) => ArticleCard(),
                           ))
                       .toList()))),
     );
