@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:splash_view/splash_view.dart';
-import 'package:sunray_news/app/theme/theme_constants.dart';
-import 'package:sunray_news/app/theme/theme_manager.dart';
-
-import 'package:tabler_icons/tabler_icons.dart';
 
 import '../../bookmark/view/bookmark_view.dart';
 import '../../home/view/home_view.dart';
 import '../../search/view/search_view.dart';
-import '../../settings/view/setting_view.dart';
 import '../widgets/bottom_nav_bar.dart';
 
 PageController _pageController = PageController();
