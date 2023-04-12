@@ -9,25 +9,32 @@ class BottomContentComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 7.w),
+      padding: EdgeInsets.symmetric(horizontal: 10.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [Text("Engadget"), Text("1 week ago")],
+          Text(
+            "Source dateTime",
+            style: context.bodySmall.copyWith(color: Colors.grey),
           ),
           Row(
             children: [
               IconButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(
+                          context.theme.colorScheme.surface)),
                   onPressed: () {},
                   icon: Icon(
-                    TablerIcons.book,
-                    color: context.theme.colorScheme.secondary,
+                    TablerIcons.download,
+                    color: context.theme.colorScheme.onSecondary,
                   )),
               IconButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(
+                          context.theme.colorScheme.surface)),
                   onPressed: () {},
                   icon: Icon(TablerIcons.share,
-                      color: context.theme.colorScheme.secondary)),
+                      color: context.theme.colorScheme.onSecondary)),
             ],
           )
         ],

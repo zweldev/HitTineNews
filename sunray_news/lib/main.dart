@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sunray_news/app/modules/main/cubit/main_view_cubit.dart';
+import 'package:sunray_news/app/service/api_service.dart';
 import 'package:sunray_news/app/theme/cubit/theme_cubit.dart';
 
 import 'app/modules/home/view/home_view.dart';
@@ -18,6 +19,8 @@ void main() {
       statusBarIconBrightness: Brightness.dark));
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  APIService.instance.getNewsByCategory("top-headlines", "us");
+  // APIService.instance.searchNews("lee");
   runApp(SunRayNews());
 }
 
@@ -35,7 +38,6 @@ class SunRayNews extends StatelessWidget {
         return BlocBuilder<ThemeCubit, ThemeState>(
           builder: (context, state) {
             return MaterialApp(
-              
               debugShowCheckedModeBanner: false,
               initialRoute: MainView.route,
               theme: lightTheme,

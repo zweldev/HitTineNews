@@ -10,22 +10,20 @@ class MainContentComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
+      radius: 22,
       onTap: () {
         print("Gesture detected");
       },
       child: Column(
         children: [
-          // imageComponent("null"),
           Container(
             width: context.width,
             height: 300,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(
-                        "assets/images/sunray-news-logo.png"))),
+                    image: AssetImage("assets/images/sunray-news-logo.png"))),
           ),
-          SizedBox(height: 10),
           ContentComponent(description: "", content: ""),
         ],
       ),

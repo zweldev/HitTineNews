@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
 
   # networking
-  dio: ^5.0.2
+  http: ^0.13.5
 
   # pattern
   bloc: ^8.1.1
