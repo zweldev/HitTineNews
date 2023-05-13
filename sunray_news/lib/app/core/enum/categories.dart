@@ -1,5 +1,5 @@
 enum Categories {
-  TopHeadlines,
+  top_headlines,
   Business,
   Technology,
   Entertainment,

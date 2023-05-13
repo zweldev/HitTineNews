@@ -17,16 +17,15 @@ class APIService {
     }
   }
 
-  Future<List<NewsModel>> getNewsByCategory(
-    String category,
+  Future<List<NewsModel>> getNewsForTopHeadline({
+    String? category,
     String? country,
-  ) async {
+  }) async {
     http.Response r = await http
         .get(Uri.parse(categorized_url(category: category, country: country)));
     if (r.statusCode == 200) {
       var jsonResponse = r.body;
-      List<dynamic> news_items =
-          jsonDecode(jsonResponse)['articles'];
+      List<dynamic> news_items = jsonDecode(jsonResponse)['articles'];
       List<NewsModel> news = news_items
           .map(
             (e) => NewsModel.fromJSON(e),

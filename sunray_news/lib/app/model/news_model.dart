@@ -26,7 +26,7 @@ class NewsModel {
         title: data['title'],
         description: data['description'],
         url: data['url'],
-        urlToImg: data['urlToImg'],
+        urlToImg: data['urlToImage'],
         publishedAt: data['publishedAt'],
         content: data['content']);
   }
@@ -37,7 +37,7 @@ class NewsModel {
         "title": title,
         "description": description,
         "url": url,
-        "urlToImg": urlToImg,
+        "urlToImage": urlToImg,
         "publishedAt": publishedAt,
         "content": content
       };
