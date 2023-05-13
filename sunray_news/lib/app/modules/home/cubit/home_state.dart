@@ -5,7 +5,7 @@ class HomeState extends Equatable {
   HomeState({this.news , required this.loading});
 
   final List<NewsModel>? news;
-  final bool loading;
+  late final bool loading;
 
   @override
   List<Object> get props => [];

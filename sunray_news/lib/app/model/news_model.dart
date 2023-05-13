@@ -2,7 +2,7 @@ class NewsModel {
   final Source source;
   final String? authorName;
   final String title;
-  final String description;
+  final String? description;
   final String url;
   final String? urlToImg;
   final String publishedAt;
@@ -12,7 +12,7 @@ class NewsModel {
     required this.source,
     this.authorName,
     required this.title,
-    required this.description,
+    this.description,
     required this.url,
     this.urlToImg,
     required this.publishedAt,
@@ -22,7 +22,7 @@ class NewsModel {
   factory NewsModel.fromJSON(Map<String, dynamic> data) {
     return NewsModel(
         source: Source.fromJSON(data['source']),
-        authorName: data['authorName'],
+        authorName: data['author'],
         title: data['title'],
         description: data['description'],
         url: data['url'],
@@ -33,7 +33,7 @@ class NewsModel {
 
   Map<String, dynamic> toJSON() => {
         "source": source,
-        "authorName": authorName,
+        "author": authorName,
         "title": title,
         "description": description,
         "url": url,

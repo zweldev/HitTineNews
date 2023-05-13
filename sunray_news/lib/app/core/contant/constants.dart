@@ -6,14 +6,10 @@ String Base_url =
 
 // by category and country
 String categorized_url({
-  String? category,
-  String? country,
+   String? category,
 }) {
-  if (category == null) {
-    return "https://newsapi.org/v2/top-headlines?country=us&apiKey=$apiKey";
-  } else {
-    return "https://newsapi.org/v2/top-headlines?category=$category&apiKey=$apiKey";
-  }
+   return "https://newsapi.org/v2/top-headlines?country=us&category=$category&apiKey=$apiKey";
+
 }
 
 // by keyword

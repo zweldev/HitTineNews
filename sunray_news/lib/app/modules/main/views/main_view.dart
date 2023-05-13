@@ -39,7 +39,6 @@ class MainView extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               controller: _pageController,
               onPageChanged: (val) {
-                print("Val is $val");
               },
               itemCount: pages.length,
               itemBuilder: (context, i) => pages[i],

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sunray_news/app/core/enum/categories.dart';
 import 'package:sunray_news/app/core/extensions/theme_extensions.dart';
-import 'package:sunray_news/app/widgets/article_card.dart';
 import 'package:sunray_news/app/widgets/body_component.dart';
 
 class HomeView extends StatelessWidget {
-  HomeView({super.key});
+  const HomeView({super.key});
 
   static String route = "/home_view";
   @override

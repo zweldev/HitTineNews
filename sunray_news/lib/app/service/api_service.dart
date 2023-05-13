@@ -13,16 +13,16 @@ class APIService {
     http.Response r = await http.get(Uri.parse(Base_url));
     if (r.statusCode == 200) {
       var jsonResponse = r.body;
-      print("Response is $jsonResponse");
     }
   }
 
-  Future<List<NewsModel>> getNewsForTopHeadline({
+  Future<List<NewsModel>> getNews({
     String? category,
     String? country,
   }) async {
-    http.Response r = await http
-        .get(Uri.parse(categorized_url(category: category, country: country)));
+    http.Response r = await http.get(Uri.parse(categorized_url(
+      category: category,
+    )));
     if (r.statusCode == 200) {
       var jsonResponse = r.body;
       List<dynamic> news_items = jsonDecode(jsonResponse)['articles'];
@@ -31,8 +31,8 @@ class APIService {
             (e) => NewsModel.fromJSON(e),
           )
           .toList();
-      log(" Response is ${news.map((e) => e.toJSON()).toList()} ");
 
+      log("used url ${news.map((e) => e.toJSON()).toList()}");
       return news;
     } else
       return [];
@@ -45,7 +45,6 @@ class APIService {
     if (r.statusCode == 200) {
       var jsonResponse = r.body;
       var news_aricles = jsonDecode(jsonResponse)['articles'];
-      log("Response is $news_aricles ");
     }
   }
 }

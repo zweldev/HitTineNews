@@ -3,24 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sunray_news/app/modules/home/cubit/home_cubit.dart';
 import 'package:sunray_news/app/modules/main/cubit/main_view_cubit.dart';
-import 'package:sunray_news/app/service/api_service.dart';
 import 'package:sunray_news/app/theme/cubit/theme_cubit.dart';
 
-import 'app/modules/home/view/home_view.dart';
 import 'app/modules/main/views/main_view.dart';
 import 'app/theme/theme_constants.dart';
-import 'app/theme/theme_manager.dart';
-import 'package:splash_view/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark));
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
-  // APIService.instance.searchNews("lee");
   runApp(SunRayNews());
 }
 

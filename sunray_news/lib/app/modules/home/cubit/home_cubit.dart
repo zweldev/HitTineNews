@@ -12,11 +12,14 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeState(news: [], loading: true));
 
   void getNews({String? category}) async {
-    List<NewsModel> news = await service.getNewsForTopHeadline(country: 'us');
-    print('getNews working ${news.map((e) => e.urlToImg).toList()}');
-    emit(state.copyWith(
-      news: await service.getNewsForTopHeadline(country: 'us'),
-      loading: false,
-    ));
+    var data = await service.getNews(category: category, country: 'us');
+      if (data.isNotEmpty) {
+        emit(state.copyWith(news: data, loading: false));
+      }
+  }
+
+  void refresh() {
+    state.news?.clear();
+    getNews();
   }
 }
