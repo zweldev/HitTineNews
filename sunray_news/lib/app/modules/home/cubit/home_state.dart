@@ -2,13 +2,13 @@
 part of 'home_cubit.dart';
 
 class HomeState extends Equatable {
-  HomeState({this.news , required this.loading});
+  const HomeState({this.news, required this.loading});
 
   final List<NewsModel>? news;
-  late final bool loading;
+  final bool loading;
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [loading, news];
 
   HomeState copyWith({
     List<NewsModel>? news,

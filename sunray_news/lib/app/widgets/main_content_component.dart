@@ -39,8 +39,13 @@ class MainContentComponent extends StatelessWidget {
                 ),
               ),
               errorWidget: (context, url, error) => Center(
-                child: Column(
-                  children: [Icon(Icons.error), Text("Image not Found")],
+                child: Container(
+                  width: double.infinity,
+                  color: Colors.grey[300],
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Icon(Icons.error), Text("Image not Found")],
+                  ),
                 ),
               ),
             ),

@@ -18,7 +18,6 @@ class APIService {
 
   Future<List<NewsModel>> getNews({
     String? category,
-    String? country,
   }) async {
     http.Response r = await http.get(Uri.parse(categorized_url(
       category: category,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sunray_news/app/core/contant/constants.dart';
 import 'package:sunray_news/app/core/enum/categories.dart';
 import 'package:sunray_news/app/core/extensions/theme_extensions.dart';
+import 'package:sunray_news/app/model/news_model.dart';
 import 'package:sunray_news/app/modules/home/cubit/home_cubit.dart';
 import 'package:sunray_news/app/widgets/news_feed_component.dart';
 
@@ -22,10 +22,9 @@ class _BodyComponentState extends State<BodyComponent> {
   void initState() {
     super.initState();
     print('change with cat ${widget.cat.toName(widget.cat)}');
-    BlocProvider.of<HomeCubit>(context).getNews(
-        category: widget.cat.toName(widget.cat));
+    BlocProvider.of<HomeCubit>(context)
+        .getNews(category: widget.cat.toName(widget.cat));
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -39,31 +38,29 @@ class _BodyComponentState extends State<BodyComponent> {
               child: LoadingWidget(),
             ),
           );
+        }
+
+        var articles = state.news ?? [];
+
+        List<NewsModel> items = articles.map((e) => e).toList();
+
+        if (items.isEmpty) {
+          print('tagl No Items');
+          return Center(
+            child: Text('No Data'),
+          );
         } else {
           return RefreshIndicator(
-            onRefresh: () async {
-              BlocProvider.of<HomeCubit>(context).refresh();
-            },
-            color: context.secondaryColor,
-            child: NewsFeedComponent(
-                articles: state.news ?? [],
-                cat: widget.cat),
-          );
+          onRefresh: () async {
+            BlocProvider.of<HomeCubit>(context).getNews(loading: true);
+          },
+          color: context.secondaryColor,
+          child: NewsFeedComponent(articles: items, cat: widget.cat),
+        );
         }
+
+        
       },
     );
   }
 }
-
-
-/**
- * ListView.builder(
-                itemCount: state.news!.length,
-                itemBuilder: (context, i) {
-                  print("bodyComponent ${state.news![i].toJSON()}");
-                  return ArticleCard(
-                    cat: widget.cat,
-                    article: state.news![i],
-                  );
-                })
- */

@@ -24,7 +24,7 @@ class ArticleCard extends StatelessWidget {
           children: [
             MainContentComponent(
               image: article.urlToImg.toString(),
-              title: article.description ?? '',
+              title: article.title,
               content: article.content ?? '',
             ),
             BottomContentComponent()
