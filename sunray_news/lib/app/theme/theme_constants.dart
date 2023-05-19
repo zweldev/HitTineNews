@@ -20,7 +20,7 @@ ThemeData lightTheme = ThemeData(
     onError: Colors.red,
     background: Colors.white,
     onBackground: Colors.grey,
-    surface: Colors.grey.shade300,
+    surface: Colors.grey.shade400,
     onSurface: Colors.black,
   ),
 );
@@ -44,7 +44,7 @@ ThemeData darkTheme = ThemeData(
     onError: Colors.red,
     background: Colors.black,
     onBackground: Colors.black,
-    surface: Colors.grey.shade300,
+    surface: Colors.grey.shade400,
     onSurface: Colors.white,
   ),
 );
