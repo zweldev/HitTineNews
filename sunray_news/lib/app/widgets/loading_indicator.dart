@@ -8,6 +8,7 @@ class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LoadingIndicator(
+      
       colors: [context.secondaryColor, Colors.blue],
       indicatorType: Indicator.lineScale,
     );
