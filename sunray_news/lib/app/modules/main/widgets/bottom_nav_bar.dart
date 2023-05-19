@@ -47,7 +47,7 @@ class BottomNavBarComponent extends StatelessWidget {
                 color: context.secondaryColor,
               ),
               unselectedIconTheme: IconThemeData(
-                color: context.theme.colorScheme.surface,
+                color: context.theme.colorScheme.onBackground,
               ),
               selectedItemColor: context.secondaryColor,
               selectedFontSize: 15,

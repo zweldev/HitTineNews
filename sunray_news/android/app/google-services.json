@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "771983158327",
+    "project_id": "sunray-news",
+    "storage_bucket": "sunray-news.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771983158327:android:4f8c865f2c3bfa08dbe3b2",
+        "android_client_info": {
+          "package_name": "com.example.sunray_news"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "771983158327-61c8pubcd16fu77rllue511ed4olabi8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_FUQt6R3l01AmyBiC_IK46RzFMC6cNWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "771983158327-61c8pubcd16fu77rllue511ed4olabi8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

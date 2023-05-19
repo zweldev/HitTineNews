@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 ThemeData lightTheme = ThemeData(
   useMaterial3: true,
@@ -18,8 +19,8 @@ ThemeData lightTheme = ThemeData(
     error: Colors.red,
     onError: Colors.red,
     background: Colors.white,
-    onBackground: Colors.white,
-    surface: Colors.grey,
+    onBackground: Colors.grey,
+    surface: Colors.grey.shade300,
     onSurface: Colors.black,
   ),
 );
@@ -44,6 +45,6 @@ ThemeData darkTheme = ThemeData(
     background: Colors.black,
     onBackground: Colors.black,
     surface: Colors.grey.shade300,
-    onSurface: Colors.black,
+    onSurface: Colors.white,
   ),
 );
