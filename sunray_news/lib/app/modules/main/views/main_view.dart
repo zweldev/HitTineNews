@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:splash_view/splash_view.dart';
-
 import '../../bookmark/view/bookmark_view.dart';
 import '../../home/view/home_view.dart';
 import '../../search/view/search_view.dart';
@@ -10,6 +9,7 @@ PageController _pageController = PageController();
 
 class MainView extends StatelessWidget {
   MainView({super.key});
+
 
   static String route = "/main_view";
 
@@ -24,6 +24,7 @@ class MainView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SplashView(
+      showStatusBar: true,
       logo: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Image.asset("assets/images/sunray-news-logo.png"),
@@ -32,10 +33,9 @@ class MainView extends StatelessWidget {
       done: Done(
         curve: Curves.easeOut,
         animationDuration: Duration(milliseconds: 200),
-        Scaffold(
-          body: SafeArea(
-            top: false,
-            child: PageView.builder(
+        SafeArea(
+          child: Scaffold(
+            body: PageView.builder(
               physics: NeverScrollableScrollPhysics(),
               controller: _pageController,
               onPageChanged: (val) {
@@ -43,9 +43,9 @@ class MainView extends StatelessWidget {
               itemCount: pages.length,
               itemBuilder: (context, i) => pages[i],
             ),
+            bottomNavigationBar:
+                BottomNavBarComponent(pageController: _pageController),
           ),
-          bottomNavigationBar:
-              BottomNavBarComponent(pageController: _pageController),
         ),
       ),
     );

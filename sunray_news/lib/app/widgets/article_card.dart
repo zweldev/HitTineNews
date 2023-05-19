@@ -11,7 +11,6 @@ class ArticleCard extends StatelessWidget {
   ArticleCard({super.key, required this.article});
 
   NewsModel article;
-
   @override
   Widget build(BuildContext context) {
     print('article is ${article.urlToImg}');
@@ -26,8 +25,12 @@ class ArticleCard extends StatelessWidget {
               image: article.urlToImg.toString(),
               title: article.title,
               content: article.content ?? '',
+              urlToContent: article.url ?? '',
             ),
-            BottomContentComponent()
+            BottomContentComponent(
+              dateTime: article.publishedAt,
+              source: article.source.name,
+            )
           ],
         ),
       ),

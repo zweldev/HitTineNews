@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:sunray_news/app/core/enum/categories.dart';

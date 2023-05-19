@@ -1,23 +1,37 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sunray_news/app/modules/home/cubit/home_cubit.dart';
 import 'package:sunray_news/app/modules/main/cubit/main_view_cubit.dart';
 import 'package:sunray_news/app/theme/cubit/theme_cubit.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:sunray_news/app/widgets/article_card.dart';
 import 'app/modules/main/views/main_view.dart';
 import 'app/theme/theme_constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-void main() {
+import 'app/widgets/article_webview.dart';
+
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(); 
+  // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+  //     overlays: [SystemUiOverlay.top, buiSystemUiOverlay.bottom]);
+
+  if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android) {
+    await AndroidInAppWebViewController.setWebContentsDebuggingEnabled(true);
+  }
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
   runApp(SunRayNews());
 }
 
 class SunRayNews extends StatelessWidget {
-  const SunRayNews({super.key});
+  SunRayNews({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +52,7 @@ class SunRayNews extends StatelessWidget {
               themeMode: state.themeMode,
               routes: {
                 MainView.route: (context) => MainView(),
+                ArticleWebView.route:(context) => ArticleWebView(),
               },
             );
           },
@@ -46,3 +61,4 @@ class SunRayNews extends StatelessWidget {
     );
   }
 }
+

@@ -31,7 +31,6 @@ class APIService {
           )
           .toList();
 
-      log("used url ${news.map((e) => e.toJSON()).toList()}");
       return news;
     } else
       return [];

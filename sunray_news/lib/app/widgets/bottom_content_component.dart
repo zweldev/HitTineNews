@@ -4,7 +4,11 @@ import 'package:sunray_news/app/core/extensions/theme_extensions.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 
 class BottomContentComponent extends StatelessWidget {
-  const BottomContentComponent({super.key});
+  const BottomContentComponent(
+      {super.key, required this.source, required this.dateTime});
+
+  final String source;
+  final String dateTime;
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +17,18 @@ class BottomContentComponent extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            "Source dateTime",
-            style: context.bodySmall.copyWith(color: Colors.grey),
+          Row(
+            children: [
+              Text(
+                source,
+                style: context.bodySmall.copyWith(color: Colors.grey),
+              ),
+              SizedBox(width: 10),
+              Text(
+                dateTime.split('T').first,
+                style: context.bodySmall.copyWith(color: Colors.grey),
+              ),
+            ],
           ),
           Row(
             children: [
