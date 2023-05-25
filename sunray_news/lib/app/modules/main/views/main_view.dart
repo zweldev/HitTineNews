@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:splash_view/splash_view.dart';
+import '../../auth/cubit/auth_cubit.dart';
 import '../../bookmark/view/bookmark_view.dart';
 import '../../home/view/home_view.dart';
 import '../../search/view/search_view.dart';
@@ -9,7 +13,6 @@ PageController _pageController = PageController();
 
 class MainView extends StatelessWidget {
   MainView({super.key});
-
 
   static String route = "/main_view";
 
@@ -23,6 +26,7 @@ class MainView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log('user is ${BlocProvider.of<AuthCubit>(context).state.user}');
     return SplashView(
       showStatusBar: true,
       logo: Padding(
@@ -38,8 +42,7 @@ class MainView extends StatelessWidget {
             body: PageView.builder(
               physics: NeverScrollableScrollPhysics(),
               controller: _pageController,
-              onPageChanged: (val) {
-              },
+              onPageChanged: (val) {},
               itemCount: pages.length,
               itemBuilder: (context, i) => pages[i],
             ),

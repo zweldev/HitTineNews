@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sunray_news/app/core/enum/categories.dart';
 import 'package:sunray_news/app/core/extensions/theme_extensions.dart';
 import 'package:sunray_news/app/model/news_model.dart';
 import 'package:sunray_news/app/widgets/bottom_content_component.dart';

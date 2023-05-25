@@ -1,8 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:sunray_news/app/core/extensions/theme_extensions.dart';
 import 'package:sunray_news/app/widgets/article_webview.dart';
 import 'package:sunray_news/app/widgets/loading_indicator.dart';

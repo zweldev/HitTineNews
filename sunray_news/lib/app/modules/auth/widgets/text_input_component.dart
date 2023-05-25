@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TextInputComponent extends StatefulWidget {
-  TextInputComponent({super.key, required this.isPassword});
+  TextInputComponent({super.key, required this.isPassword, required this.controller});
 
   final bool isPassword;
+  TextEditingController controller = TextEditingController();
 
   @override
   State<TextInputComponent> createState() => _TextInputComponentState();
@@ -23,6 +24,7 @@ class _TextInputComponentState extends State<TextInputComponent> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: TextFormField(
+            controller: widget.controller,
             cursorColor: Theme.of(context).colorScheme.secondary,
             showCursor: true,
             style: TextStyle(

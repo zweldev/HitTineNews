@@ -1,9 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sunray_news/app/core/enum/language.dart';
 import 'package:sunray_news/app/core/extensions/navigation_extensions.dart';
 import 'package:sunray_news/app/core/extensions/theme_extensions.dart';
+import 'package:sunray_news/app/modules/auth/cubit/auth_cubit.dart';
+import 'package:sunray_news/app/modules/auth/view/auth_screen.dart';
 import 'package:sunray_news/app/modules/main/widgets/setting_tile.dart';
 import 'package:sunray_news/app/theme/cubit/theme_cubit.dart';
 import 'package:sunray_news/app/widgets/custom_button.dart';
@@ -76,29 +79,22 @@ class _SettingDialogState extends State<SettingDialog> {
                       value: state.themeMode == ThemeMode.dark ? true : false),
                 ),
                 SizedBox(height: 20),
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomButton(
-                        onTap: () {
-                          context.pop();
+                SettingTile(
+                    text: "Logout",
+                    trailing: FilledButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStatePropertyAll(Colors.grey.shade200)),
+                        onPressed: () async {
+                          await FirebaseAuth.instance.signOut();
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                              AuthScreen.route, (route) => false);
+                          // Navigator.of(context).pop();
                         },
-                        isConfirm: false,
-                        text: "Cancel",
-                      ),
-                    ),
-                    SizedBox(width: 12),
-                    Expanded(
-                      child: CustomButton(
-                        onTap: () {
-                          context.pop();
-                        },
-                        isConfirm: true,
-                        text: "Confirm",
-                      ),
-                    ),
-                  ],
-                )
+                        child: Icon(
+                          Icons.logout,
+                          color: Colors.red,
+                        ))),
               ],
             ),
           ),

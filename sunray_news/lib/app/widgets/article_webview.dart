@@ -63,7 +63,7 @@ class _ArticleWebViewState extends State<ArticleWebView> {
         appBar: AppBar(
           toolbarHeight: 50,
           centerTitle: true,
-          backgroundColor: Theme.of(context).colorScheme.secondary,
+          backgroundColor: Color.fromRGBO(27, 69, 113, 1),
           leading: IconButton(
               onPressed: () {
                 Navigator.of(context).pop();
