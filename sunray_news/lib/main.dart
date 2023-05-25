@@ -45,7 +45,7 @@ class SunRayNews extends StatelessWidget {
           builder: (context, state) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
-              initialRoute: AuthScreen.route  ,
+              initialRoute: MainView.route  ,
               theme: lightTheme,
               darkTheme: darkTheme,
               themeMode: state.themeMode,

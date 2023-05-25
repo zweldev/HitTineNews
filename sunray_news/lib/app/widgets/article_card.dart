@@ -26,6 +26,7 @@ class ArticleCard extends StatelessWidget {
               title: article.title,
               content: article.content ?? '',
               urlToContent: article.url ?? '',
+              source: article.source.name ?? '',
             ),
             BottomContentComponent(
               dateTime: article.publishedAt,

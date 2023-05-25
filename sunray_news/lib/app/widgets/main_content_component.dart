@@ -16,19 +16,20 @@ class MainContentComponent extends StatelessWidget {
     required this.title,
     required this.content,
     required this.urlToContent,
+    required this.source
   });
   String image;
   String title;
   String content;
   String urlToContent;
-
+  String source;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       radius: 22,
       onTap: () {
-        Navigator.of(context).pushNamed(ArticleWebView.route, arguments: urlToContent);
+        Navigator.of(context).pushNamed(ArticleWebView.route, arguments: {'url':urlToContent , 'source': source });
       },
       child: Column(
         children: [
