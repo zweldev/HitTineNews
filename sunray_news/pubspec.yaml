@@ -31,6 +31,8 @@ dependencies:
   splash_view: ^2.0.1
   shared_preferences: ^2.1.1
   email_validator: ^2.1.17
+  connectivity_plus: ^4.0.1
+  fluttertoast: ^8.2.2
 
   #firebase
   firebase_core: ^2.12.0
