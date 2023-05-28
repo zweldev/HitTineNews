@@ -25,7 +25,7 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   final Connectivity _connectivity = Connectivity();
 
-  ConnectivityResult _connectionStatus = ConnectivityResult.none;
+  ConnectivityResult _connectionStatus = ConnectivityResult.wifi;
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
 
   List<Widget> pages = [
@@ -42,9 +42,9 @@ class _MainViewState extends State<MainView> {
       (w) {
         _connectivity.onConnectivityChanged.listen((event) {
           updateConnectionStatus(event);
-         
         });
-         log('connectivity status ${_connectionStatus}');
+        _connectionStatus == ConnectivityResult.none ? showToast() : null;
+        log('connectivity status ${_connectionStatus}');
         // showToast();
       },
     );
@@ -63,11 +63,10 @@ class _MainViewState extends State<MainView> {
   }
 
   void showToast() async {
-    _connectivity.onConnectivityChanged.listen((event) {
-      event == ConnectivityResult.none
-          ? Fluttertoast.showToast(msg: 'NO INTERNET')
-          : null;
-    });
+    await Fluttertoast.showToast(
+        msg: 'Bad Network connection',
+        textColor: Colors.white,
+        backgroundColor: Colors.red);
   }
 
   int currentIndex = 3;
