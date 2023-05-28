@@ -1,8 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:sunray_news/app/core/extensions/theme_extensions.dart';
 import 'package:sunray_news/app/widgets/article_webview.dart';
 import 'package:sunray_news/app/widgets/loading_indicator.dart';
@@ -16,19 +13,20 @@ class MainContentComponent extends StatelessWidget {
     required this.title,
     required this.content,
     required this.urlToContent,
+    required this.source
   });
   String image;
   String title;
   String content;
   String urlToContent;
-
+  String source;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       radius: 22,
       onTap: () {
-        Navigator.of(context).pushNamed(ArticleWebView.route, arguments: urlToContent);
+        Navigator.of(context).pushNamed(ArticleWebView.route, arguments: {'url':urlToContent , 'source': source });
       },
       child: Column(
         children: [
