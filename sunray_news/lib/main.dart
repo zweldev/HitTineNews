@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sunray_news/app/modules/auth/cubit/auth_cubit.dart';
+import 'package:sunray_news/app/modules/auth/view/auth_options_view.dart';
 import 'package:sunray_news/app/modules/home/cubit/home_cubit.dart';
 import 'package:sunray_news/app/modules/main/cubit/main_view_cubit.dart';
 import 'package:sunray_news/app/theme/cubit/theme_cubit.dart';
@@ -60,12 +61,12 @@ class SunRayNews extends StatelessWidget {
                 log('is user ${authS.user}');
                 return MaterialApp(
                   debugShowCheckedModeBanner: false,
-                  initialRoute:
-                      authS.user == null ? AuthScreen.route : MainView.route,
+                  initialRoute: AuthOptionView.route,
                   theme: lightTheme,
                   darkTheme: darkTheme,
                   themeMode: state.themeMode,
                   routes: {
+                    AuthOptionView.route: (context) => AuthOptionView(),
                     AuthScreen.route: (context) => AuthScreen(),
                     MainView.route: (context) => MainView(),
                     ArticleWebView.route: (context) => ArticleWebView(),

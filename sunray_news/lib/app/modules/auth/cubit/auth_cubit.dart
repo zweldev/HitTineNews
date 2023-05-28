@@ -18,7 +18,7 @@ class AuthCubit extends Cubit<AuthState> {
     required String emailAddress,
     required String password,
     required ValueChanged callback,
-  }) async {
+  }) async {  
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailAddress, password: password);
