@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sunray_news/app/core/extensions/theme_extensions.dart';
 
 class SignInButton extends StatelessWidget {
   SignInButton({

@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,8 +17,10 @@ class AuthCubit extends Cubit<AuthState> {
     required String emailAddress,
     required String password,
     required ValueChanged callback,
-  }) async {  
+    required ValueChanged errorCallback,
+  }) async {
     try {
+      log('youk dl');
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailAddress, password: password);
 
@@ -28,8 +29,8 @@ class AuthCubit extends Cubit<AuthState> {
 
         callback(state.user);
       }
-    } catch (e) {
-      log('Sign up trouble ${e}');
+    } on FirebaseAuthException catch (e) {
+      errorCallback(e.code);
     }
   }
 
@@ -37,6 +38,7 @@ class AuthCubit extends Cubit<AuthState> {
     required String emailAddress,
     required String password,
     required ValueChanged callback,
+    required ValueChanged errorCallback,
   }) async {
     try {
       await FirebaseAuth.instance
@@ -47,19 +49,8 @@ class AuthCubit extends Cubit<AuthState> {
 
         callback(state.user);
       }
-
-      // FirebaseAuth.instance.userChanges().listen((User? user) {
-      //   if (user != null) {
-      //     Navigator.of(context).pushNamedAndRemoveUntil(
-      //       MainView.route,
-      //       (route) => false,
-      //     );
-      //   }
-      // });
-    } catch (e) {
-      log('Sign in trouble ${e}');
+    } on FirebaseAuthException catch (e) {
+      errorCallback(e.code);
     }
   }
-
-
 }

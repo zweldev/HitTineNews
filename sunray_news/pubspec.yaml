@@ -29,6 +29,8 @@ dependencies:
   tabler_icons: ^2.5.0+1
   cupertino_icons: ^1.0.2
   splash_view: ^2.0.1
+  shared_preferences: ^2.1.1
+  email_validator: ^2.1.17
 
   #firebase
   firebase_core: ^2.12.0
