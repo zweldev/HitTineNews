@@ -1,4 +1,4 @@
-# hit_tine_news
+# sunray_news
 
 A new Flutter project.
 
