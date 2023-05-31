@@ -6,15 +6,16 @@ import 'package:sunray_news/app/widgets/bottom_content_component.dart';
 
 import 'main_content_component.dart';
 
+
 class ArticleCard extends StatelessWidget {
   ArticleCard({super.key, required this.article});
 
-  NewsModel article;
+  final NewsModel article;
   @override
   Widget build(BuildContext context) {
     print('article is ${article.urlToImg}');
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
       child: Card(
         color: context.theme.colorScheme.background,
         child: Column(
@@ -23,9 +24,9 @@ class ArticleCard extends StatelessWidget {
             MainContentComponent(
               image: article.urlToImg.toString(),
               title: article.title,
-              content: article.content ?? '',
-              urlToContent: article.url ?? '',
-              source: article.source.name ?? '',
+              content: article.description ?? '',
+              urlToContent: article.url,
+              source: article.source.name,
             ),
             BottomContentComponent(
               dateTime: article.publishedAt,

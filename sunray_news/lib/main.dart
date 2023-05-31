@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +7,7 @@ import 'package:sunray_news/app/modules/auth/cubit/auth_cubit.dart';
 import 'package:sunray_news/app/modules/auth/view/auth_options_view.dart';
 import 'package:sunray_news/app/modules/home/cubit/home_cubit.dart';
 import 'package:sunray_news/app/modules/main/cubit/main_view_cubit.dart';
+import 'package:sunray_news/app/modules/search/cubit/search_news_cubit.dart';
 import 'package:sunray_news/app/theme/cubit/theme_cubit.dart';
 import 'package:flutter/foundation.dart';
 import 'app/modules/auth/view/auth_screen.dart';
@@ -30,19 +28,10 @@ Future<void> main() async {
 
   String? userData = prefs.getString('userdata');
 
-  log('located userdata ${userData}');
-
   if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android) {
     await AndroidInAppWebViewController.setWebContentsDebuggingEnabled(true);
   }
 
-  FirebaseAuth.instance.userChanges().listen((User? user) {
-    if (user == null) {
-      print('user is signed Out!');
-    } else {
-      print('User is signed in!');
-    }
-  });
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
   runApp(SunRayNews(
@@ -52,7 +41,7 @@ Future<void> main() async {
 
 class SunRayNews extends StatelessWidget {
   SunRayNews({super.key, required this.status});
-  UserStatus status;
+ final UserStatus status;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +50,8 @@ class SunRayNews extends StatelessWidget {
         BlocProvider(create: (_) => MainViewCubit()),
         BlocProvider(create: (_) => ThemeCubit()),
         BlocProvider(create: (_) => HomeCubit()),
-        BlocProvider(create: (_) => AuthCubit())
+        BlocProvider(create: (_) => AuthCubit()),
+        BlocProvider(create: (_) => SearchNewsCubit(),)
       ],
       child: ScreenUtilInit(builder: (context, child) {
         return BlocBuilder<ThemeCubit, ThemeState>(
@@ -75,8 +65,10 @@ class SunRayNews extends StatelessWidget {
                   darkTheme: darkTheme,
                   themeMode: state.themeMode,
                   routes: {
+
                     AuthOptionView.route: (context) => AuthOptionView(),
                     AuthScreen.route: (context) => AuthScreen(),
+                    
                     MainView.route: (context) => MainView(),
                     ArticleWebView.route: (context) => ArticleWebView(),
                   },

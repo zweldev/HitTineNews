@@ -19,11 +19,15 @@ class BottomContentComponent extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(
-                source,
-                style: context.bodySmall.copyWith(color: Colors.grey),
+              SizedBox(
+                width: 100,
+                child: Text(
+                  source,
+                  overflow: TextOverflow.ellipsis,
+                  style: context.bodySmall.copyWith(color: Colors.grey),
+                ),
               ),
-              SizedBox(width: 10),
+              // SizedBox(width: 10),
               Text(
                 dateTime.split('T').first,
                 style: context.bodySmall.copyWith(color: Colors.grey),

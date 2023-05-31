@@ -8,8 +8,8 @@ class TextInputComponent extends StatefulWidget {
       required this.validator});
 
   final bool isPassword;
-  TextEditingController controller = TextEditingController();
-  String? Function(String?)? validator;
+  final TextEditingController controller;
+  final String? Function(String?)? validator;
 
   @override
   State<TextInputComponent> createState() => _TextInputComponentState();
@@ -26,11 +26,9 @@ class _TextInputComponentState extends State<TextInputComponent> {
         validator: widget.validator,
         autocorrect: true,
         controller: widget.controller,
-        cursorColor: Theme.of(context).colorScheme.secondary,
+        cursorColor: Color.fromRGBO(27, 69, 113, 1),
         showCursor: true,
-        style: TextStyle(
-          fontSize: 17,
-        ),
+        style: TextStyle(fontSize: 17, color: Colors.black),
         obscureText: widget.isPassword ? obsecureText : false,
         decoration: InputDecoration(
             filled: true,

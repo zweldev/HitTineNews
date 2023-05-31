@@ -7,26 +7,26 @@ import 'package:sunray_news/app/widgets/loading_indicator.dart';
 import 'content_component.dart';
 
 class MainContentComponent extends StatelessWidget {
-  MainContentComponent({
-    super.key,
-    required this.image,
-    required this.title,
-    required this.content,
-    required this.urlToContent,
-    required this.source
-  });
-  String image;
-  String title;
-  String content;
-  String urlToContent;
-  String source;
+  MainContentComponent(
+      {super.key,
+      required this.image,
+      required this.title,
+      required this.content,
+      required this.urlToContent,
+      required this.source});
+  final String image;
+  final String title;
+  final String content;
+  final String urlToContent;
+  final String source;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       radius: 22,
       onTap: () {
-        Navigator.of(context).pushNamed(ArticleWebView.route, arguments: {'url':urlToContent , 'source': source });
+        Navigator.of(context).pushNamed(ArticleWebView.route,
+            arguments: {'url': urlToContent, 'source': source});
       },
       child: Column(
         children: [
@@ -57,8 +57,7 @@ class MainContentComponent extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 10, right: 5, left: 5),
-            child: ContentComponent(
-                description: title, content: content),
+            child: ContentComponent(description: title, content: content),
           ),
         ],
       ),

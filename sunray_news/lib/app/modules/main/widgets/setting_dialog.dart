@@ -72,7 +72,6 @@ class _SettingDialogState extends State<SettingDialog> {
                       context: context,
                       onChanged: (e) {
                         context.read<ThemeCubit>().themeChange(e);
-                        print("Button e is $e");
                       },
                       value: state.themeMode == ThemeMode.dark ? true : false),
                 ),

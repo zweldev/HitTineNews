@@ -43,13 +43,6 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
               ),
             ));
-    // showDialog(
-    //     barrierDismissible: true,
-    //     context: context,
-    //     builder: (context) => AlertDialog(
-    //           title: Text('Log in status'),
-    //           content: Text(response.replaceAll('-', ' ').toUpperCase()),
-    //         ));
   }
 
   @override
@@ -60,29 +53,13 @@ class _AuthScreenState extends State<AuthScreen> {
 
         return Scaffold(
           resizeToAvoidBottomInset: false,
-          backgroundColor: Theme.of(context).colorScheme.secondary,
+          backgroundColor: Color.fromRGBO(27, 69, 113, 1),
           body: SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Padding(
-                  //   padding: const EdgeInsets.only(top: 70, bottom: 80),
-                  //   child: Container(
-                  //     height: isRegister ? 115 : 150,
-                  //     width: MediaQuery.of(context).size.width,
-                  //     child: Center(
-                  //       child: Container(
-                  //         height: 150,
-                  //         decoration: BoxDecoration(
-                  //             image: DecorationImage(
-                  //                 image: AssetImage(
-                  //                     'assets/images/sunray-news-logo.png'))),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
                   Form(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     key: formKey,
@@ -108,7 +85,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           validator: (e) => e!.isEmpty
                               ? 'required Password'
                               : e.length < 8
-                                  ? 'Passoword length should be longer than 8'
+                                  ? 'Password length should be longer than 8'
                                   : null,
                         ),
                         isRegister
@@ -131,7 +108,6 @@ class _AuthScreenState extends State<AuthScreen> {
                                           Colors.amber)),
                                   onPressed: () async {
                                     if (!formKey.currentState!.validate()) {
-                                      log('textforms are invalid');
                                       return;
                                     }
 
@@ -218,20 +194,3 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 }
-
-/**
- * try {
-  final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-    email: emailAddress,
-    password: password,
-  );
-} on FirebaseAuthException catch (e) {
-  if (e.code == 'weak-password') {
-    print('The password provided is too weak.');
-  } else if (e.code == 'email-already-in-use') {
-    print('The account already exists for that email.');
-  }
-} catch (e) {
-  print(e);
-}
- */

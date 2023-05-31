@@ -8,8 +8,8 @@ import 'article_card.dart';
 class NewsFeedComponent extends StatelessWidget {
   NewsFeedComponent({super.key, required this.articles, required this.cat});
 
-  List<NewsModel> articles;
-  Categories cat;
+  final List<NewsModel> articles;
+ final Categories cat;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(

@@ -11,9 +11,7 @@ class APIService {
 
   Future<void> getData() async {
     http.Response r = await http.get(Uri.parse(Base_url));
-    if (r.statusCode == 200) {
-      var jsonResponse = r.body;
-    }
+    if (r.statusCode == 200) {}
   }
 
   Future<List<NewsModel>> getNews({
@@ -36,13 +34,20 @@ class APIService {
       return [];
   }
 
-  Future<void> searchNews(
+  Future<List<NewsModel>?> searchNews(
     String keyword,
   ) async {
     http.Response r = await http.get(Uri.parse(search_url(keyword: keyword)));
+
+    log('search url ${search_url(keyword: keyword)}');
     if (r.statusCode == 200) {
-      var jsonResponse = r.body;
-      var news_aricles = jsonDecode(jsonResponse)['articles'];
+      var json = r.body;
+      List<dynamic> data = jsonDecode(json)['articles'];
+      List<NewsModel> searchResults = data
+          .map((e) => NewsModel.fromJSON(e))
+          .toList();
+
+      return searchResults;
     }
   }
 }

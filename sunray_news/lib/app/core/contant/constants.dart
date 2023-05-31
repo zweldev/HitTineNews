@@ -14,9 +14,9 @@ String categorized_url({
 
 // by keyword
 String search_url({
-  String? keyword,
+  required String keyword,
 }) {
-  return "https://newsapi.org/v2/everything?q=${keyword ?? ""}&apiKey=$apiKey";
+  return "https://newsapi.org/v2/everything?q=${keyword}&apiKey=$apiKey";
 }
 
 //by category and source

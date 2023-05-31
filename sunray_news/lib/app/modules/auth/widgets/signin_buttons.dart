@@ -7,9 +7,9 @@ class SignInButton extends StatelessWidget {
     required this.img,
     required this.onTap,
   });
-  String text;
-  String img;
-  VoidCallback onTap;
+ final String text;
+ final String img;
+ final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,10 @@ class SignInButton extends StatelessWidget {
               ),
               SizedBox(width: 15),
               Text(text,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black)),
             ],
           ),
         ),

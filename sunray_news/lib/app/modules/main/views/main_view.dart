@@ -1,10 +1,5 @@
 import 'dart:async';
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../auth/cubit/auth_cubit.dart';
 import '../../bookmark/view/bookmark_view.dart';
 import '../../home/view/home_view.dart';
 import '../../search/view/search_view.dart';
@@ -38,14 +33,12 @@ class _MainViewState extends State<MainView> {
   void initState() {
     super.initState();
     Timer.periodic(
-      Duration(seconds: 5),
+      Duration(seconds: 10),
       (w) {
         _connectivity.onConnectivityChanged.listen((event) {
           updateConnectionStatus(event);
         });
         _connectionStatus == ConnectivityResult.none ? showToast() : null;
-        log('connectivity status ${_connectionStatus}');
-        // showToast();
       },
     );
   }
@@ -73,7 +66,6 @@ class _MainViewState extends State<MainView> {
 
   @override
   Widget build(BuildContext context) {
-    log('user is ${BlocProvider.of<AuthCubit>(context).state.user}');
     return SafeArea(
       child: Scaffold(
         body: PageView.builder(
